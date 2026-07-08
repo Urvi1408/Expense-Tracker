@@ -1,0 +1,1 @@
+ return render_template("index.html",total=total,average=average,highest=highest,line=line)

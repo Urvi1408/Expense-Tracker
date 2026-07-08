@@ -20,7 +20,12 @@ def category_wise_expense():
 def highest_expense():
     df=load_csv()
     high=df.loc[df["amount"].idxmax()]
-    return high
+    return {
+            "amount": high["amount"],
+            "category": high["category"],
+            "description": high["description"],
+            "date": high["date"]
+            }
 
 def lowest_expense():
     df=load_csv()

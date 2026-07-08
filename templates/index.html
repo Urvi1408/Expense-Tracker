@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header-text">
+    <h2> Personal Financial Tracker </h2>
+    <!-- <div>{{name}}</div> -->
+    <p>Welcome to your dashboard.</p>
+</header>
+
+<main>
+    <aside>
+
+        <h3>Menu</h3>
+        <ul>
+            <li> Dashboard </li>
+            <li> Add Expense </li>
+            <li> Delete Expense </li>
+            <li> Analytics </li>
+        </ul>
+    
+    </aside>
+
+<section>
+    <p>Here's your financial overview </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <p>{{ total }}</p>
+        </div>
+        <div class="card">
+            <h3>Average Expenses</h3>
+            <p>{{ average }}</p>
+        </div>
+        <div class="card">
+            <h3>Highest Expense</h3>
+
+            <p>Amount: ₹{{ highest.amount }}</p>
+            <p>Category: {{ highest.category }}</p>
+            <p>Description: {{ highest.description }}</p>
+            <p>Date: {{ highest.date }}</p>
+        </div>
+        
+        <div class="card">
+            <h3>Transactions</h3>
+            <p> </p>
+        </div>
+    </div>
+
+    <div class="section-title">
+            <h2>Spending Insights</h2>
+            <div class="graph-box">
+                 <img src="data:image/png;base64,{{ line }}">
+            </div>
+    </div>
+
+    <div class="charts">
+
+        <div class="chart-box">
+            <h2>Category Breakdown</h2>
+            <div class="graph-box">
+                 <img src="data:image/png;base64,{{ cat }}">
+            </div>
+        </div>
+        <div class="chart-box">
+            <h2>Monthly Spending</h2>
+            <div class="graph-box">
+                 <img src="data:image/png;base64,{{ month }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+
+        <div class="table-box">
+            <h2>Top 5 Expenses</h2>
+            <div class="graph-box">
+                 <img src="data:image/png;base64,{{ exp }}">
+            </div>
+        </div>
+        <div class="table-box">
+            <h2>Payment Modes</h2>
+            <div class="graph-box">
+                 <img src="data:image/png;base64,{{ mode }}">
+            </div>
+        </div>
+</div>
+
+</section>
+
+</main>
+
+</body>
+</html>
