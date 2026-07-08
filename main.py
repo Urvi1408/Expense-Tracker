@@ -1,6 +1,6 @@
-import expenses_manager as em
-import visualization 
-import analysis
+import utils.expenses_manager as em
+import utils.visualization as visualization 
+import utils.analysis as analysis
 
 print("Welcome to the Expense Manager!")
 
@@ -53,10 +53,8 @@ while True:
                 13. Sort by Amount (Ascending)
                 14. Sort by Amount (Descending)
                 15. Sort by Date
-                16. Search by Category
-                17. Search by Payment Mode
-                18. Category Percentage
-                19. Back
+                16. Category Percentage
+                17. Back
                 ==============================
                 """)
 
@@ -108,15 +106,9 @@ while True:
                 print(analysis.sort_by_date())
 
              elif ch == 16:
-                print(analysis.search_category())
-
-             elif ch == 17:
-                print(analysis.search_mode())
-
-             elif ch == 18:
                 print(analysis.category_percentage())
 
-             elif ch == 19:
+             elif ch == 17:
                 break
 
              else:
