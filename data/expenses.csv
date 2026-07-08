@@ -2,3 +2,4 @@ expense_id,date,category,description,amount,mode_of_payment
 1,23-03-2009,travel,singapore,5000.0, card
 2,01-01-2026,food,pizza hut ,650.0,upi 
 3,12-01-2026,shopping ,shirt,900.0,card
+4,02-03-2026,food,pizza,500.0,cash
