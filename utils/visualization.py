@@ -1,18 +1,16 @@
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import io
 import base64
 import utils.analysis as an
+import numpy as np
 
 def category_pie():
     data=an.category_wise_expense()
     plt.figure(figsize=(10,10))
-    colors =["#2563EB", 
-        "#60A5FA",   
-        "#93C5FD",   
-        "#BFDBFE",   
-        "#1D4ED8",   
-        "#3B82F6"   
-        ]
+    colors = plt.cm.Blues(np.linspace(0.35, 0.95, len(data)))
+    print("Category pie called")
     wedges, texts, autotexts = plt.pie(
         data.values,
         labels=data.index,
@@ -26,7 +24,13 @@ def category_pie():
 
     for autotext in autotexts:
         autotext.set_fontsize(13)
-    plt.pie(data.values, labels=data.index,autopct="%1.1f%%")
+
+    plt.pie(
+    x=data.values,
+    labels=data.index.tolist(),
+    colors=colors,
+    startangle=90
+    )
     plt.tight_layout()
 
     buffer=io.BytesIO()

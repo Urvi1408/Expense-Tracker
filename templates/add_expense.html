@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expenses</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/add_expense.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Personal Financial Tracker</h2>
+        <p>Add a new expense.</p>
+    </header>
+
+    <div class="container">
+
+        <div class="form-box">
+            <form action="/add_expense" method="POST">
+                <label>Date</label>
+                <input type="date" name="date" placeholder="Enter date" required>
+                <label>Category</label>
+                <input type="text" name="category" placeholder="Enter category" required>
+                <label>Description</label>
+                <input type="text" name="description" placeholder="Enter description" required>
+                <label>Amount</label>
+                <input type="number" name="amount" placeholder="Enter amount" required>
+                <label>Mode of Payment</label>
+                <input type="text" name="mode" placeholder="Enter mode of payment" required>
+
+                <button type="submit">
+                    Add Expense
+                </button>
+
+            </form>
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,7 +1,8 @@
-from flask import Flask,render_template,jsonify
-import utils.expenses_manager as em
+from flask import Flask, render_template, request, redirect, url_for,jsonify
+import utils.expenses_manager as em 
 import utils.visualization as visualization 
 import utils.analysis as analysis
+from datetime import datetime
 
 app=Flask(__name__)
 
@@ -17,6 +18,22 @@ def home():
     mode=visualization.payment_mode_bar()
 
     return render_template("index.html",total=total,average=average,highest=highest,line=line ,cat=cat, month=month ,exp=exp,mode=mode)
+
+@app.route("/add_expense",methods=["GET","POST"])
+def add_expense():
+    if request.method=="POST":
+        date=request.form["date"]
+        from datetime import datetime
+        date = datetime.strptime(date, "%Y-%m-%d").strftime("%d-%m-%Y")
+        category=request.form["category"]
+        description=request.form["description"]
+        amount=float(request.form["amount"])
+        mode=request.form["mode"]
+        
+        em.addexpenses(date,category,description,amount,mode)
+        return redirect(url_for("home"))
+
+    return render_template("add_expense.html")
 
 if __name__ =="__main__":
     app.run(debug=True)

@@ -1,23 +1,21 @@
 import csv
 
 def next_id():
-    with open("expenses.csv","r",newline="") as f:
-        expense_id=1
-        reader=csv.reader(f)
+
+    expense_id = 1
+
+    with open("data/expenses.csv", "r", newline="") as f:
+        reader = csv.reader(f)
         next(reader)
         for row in reader:
-            expense_id=int(row[0])+1
-        
+            if not row:     
+                continue
+            expense_id = int(row[0]) + 1
     return expense_id
 
-def addexpenses():
+def addexpenses(d,c,des,a,p):
 
     expense_id=next_id()
-    d=input("Enter date(dd-mm-yyyy):")
-    c=input("Enter Category:")
-    des=input("Enter description:")
-    a=float(input("Enter amount:"))
-    p=input("enter mode of payment")
 
     with open ("data/expenses.csv","a",newline="") as f :
 

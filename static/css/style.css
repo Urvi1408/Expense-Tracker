@@ -24,6 +24,9 @@ header p{
     margin-top:8px;
     opacity:0.9;
 }
+aside a{
+    text-decoration: none;
+}
 main{
     display:flex;
     min-height:calc(100vh - 100px);

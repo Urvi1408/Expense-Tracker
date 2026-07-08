@@ -93,8 +93,6 @@ def monthly_expenses():
     df=load_csv()
     df["date"]=pd.to_datetime(df["date"],dayfirst=True)
     monthly=df.groupby(df["date"].dt.month_name())["amount"].sum()
-    format="%d-%m-%Y"
-    errors="coerce"
     return monthly
 
 def category_percentage():
