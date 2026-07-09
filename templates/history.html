@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+
+<header class="header-text">
+    <h2> Personal Financial Tracker </h2>
+    <!-- <div>{{name}}</div> -->
+    <p>Welcome to your dashboard.</p>
+</header>
+
+<main>
+    <aside>
+
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('add_expense') }}">Add Expense</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+        </ul>
+    
+    </aside>
+    <section>
+        <h2>Transaction History</h2>
+        <div class="search-box">
+            <form method="GET" action="{{url_for('history')}}">
+                <select name="choice">
+
+                    <option value="1">Date</option>
+                    <option value="2">Category</option>
+                    <option value="3">Description</option>
+                    <option value="4">Payment Mode</option>
+
+                </select>
+                <input type="text", name="search" ,value="{{ search }}", placeholder="Search by category or description">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="history-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% if view %}
+                    {% for row in view %}
+
+                    <tr>
+                        <td>{{ row.expense_id}}</td>
+                        <td>{{row.date}}</td>
+                        <td>{{row.category}}</td>
+                        <td>{{row.description}}</td>
+                        <td>{{row.amount}}</td>
+                        <td>{{row.mode_of_payment}}</td>
+                    </tr>
+
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        No matching transactions found.
+                    </td>
+                </tr>
+
+{% endif %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </section>
+
+
+
+
+</main>
+</body>
+</html>

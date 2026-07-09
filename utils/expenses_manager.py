@@ -26,86 +26,78 @@ def addexpenses(d,c,des,a,p):
 
 
 def view_expenses():
-
+    expenses=[]
     with open ("data/expenses.csv","r") as f:
         reader=csv.reader(f)
         next(reader)
         for row in reader:
-            print(f"""
-                    ID: {row[0]}
-                    Date: {row[1]}
-                    Category: {row[2]}  
-                    Description: {row[3]}
-                    Amount: ₹{row[4]}
-                    Payment: {row[5]}
-                """)
+
+            expenses.append({
+                "expense_id": row[0],
+                "date": row[1],
+                "category": row[2],
+                "description": row[3],
+                "amount": row[4],
+                "mode_of_payment": row[5]
+            })
+
+    return expenses 
 
 
-def search_expenses():
+def search_expenses(choice, search):
 
+    expenses=[]
     with open("data/expenses.csv","r") as f:
         reader=csv.reader(f)
-        
-        print("""
-                Search By:
-                1. Date
-                2. Category
-                3. Description
-                4. Payment Mode
-            """)
-
-        c=int(input("Enter your choice:"))
-        s=input("Enter what u want to search:")
-
         next(reader)
-        found=False
+        
+        search=search.strip().lower()
 
         for row in reader:
-            if (c==1) and (s.lower() in row[1].lower()):
-                print(f"""
-                    ID: {row[0]}
-                    Date: {row[1]}
-                    Category: {row[2]}  
-                    Description: {row[3]}
-                    Amount: ₹{row[4]}
-                    Payment: {row[5]}
-                """)
-                found=True
-            elif (c==2) and (s.lower() in row[2].lower()):
-                print(f"""
-                    ID: {row[0]}
-                    Date: {row[1]}
-                    Category: {row[2]}  
-                    Description: {row[3]}
-                    Amount: ₹{row[4]}
-                    Payment: {row[5]}
-                """)
-                found=True
-            elif(c==3) and (s.lower() in row[3].lower()):
-                print(f"""
-                    ID: {row[0]}
-                    Date: {row[1]}
-                    Category: {row[2]}  
-                    Description: {row[3]}
-                    Amount: ₹{row[4]}
-                    Payment: {row[5]}
-                """)
-                found=True
-            elif(c==4) and (s.lower() in row[5].lower()):
-                print(f"""
-                    ID: {row[0]}
-                    Date: {row[1]}
-                    Category: {row[2]}  
-                    Description: {row[3]}
-                    Amount: ₹{row[4]}
-                    Payment: {row[5]}
-                """)
-                found=True
-            else:
-                continue
-        
-        if found==False:
-            print("No matching expense found.")
+            if choice==1 and search in row[1].lower():
+                expenses.append({
+                    "expense_id": row[0],
+                    "date": row[1],
+                    "category": row[2],
+                    "description": row[3],
+                    "amount": row[4],
+                    "mode_of_payment": row[5]
+                })
+
+            elif choice == 2 and search in row[2].strip().lower():
+
+                expenses.append({
+                    "expense_id": row[0],
+                    "date": row[1],
+                    "category": row[2],
+                    "description": row[3],
+                    "amount": row[4],
+                    "mode_of_payment": row[5]
+                })
+
+            elif choice == 3 and search in row[3].lower():
+
+                expenses.append({
+                    "expense_id": row[0],
+                    "date": row[1],
+                    "category": row[2],
+                    "description": row[3],
+                    "amount": row[4],
+                    "mode_of_payment": row[5]
+                })
+
+            elif choice == 4 and search in row[5].lower():
+
+                expenses.append({
+                    "expense_id": row[0],
+                    "date": row[1],
+                    "category": row[2],
+                    "description": row[3],
+                    "amount": row[4],
+                    "mode_of_payment": row[5]
+                })
+
+    return expenses
 
 
 def change_expenses():

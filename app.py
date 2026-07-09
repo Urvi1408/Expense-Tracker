@@ -21,6 +21,7 @@ def home():
 
     return render_template("index.html",total=total,average=average,highest=highest,line=line ,cat=cat, month=month ,exp=exp,mode=mode,success=success)
 
+
 @app.route("/add_expense",methods=["GET","POST"])
 def add_expense():
     if request.method=="POST":
@@ -36,6 +37,17 @@ def add_expense():
         return redirect(url_for("home",success="1"))
 
     return render_template("add_expense.html")
+
+@app.route("/history",methods=["GET","POST"])
+def history():
+    choice=request.args.get("choice",type=int)
+    search=request.args.get("search","")
+    if search:
+        view= em.search_expenses(choice, search)
+    else:
+        view=em.view_expenses()
+
+    return render_template("history.html",view=view,search=search)
 
 if __name__ =="__main__":
     app.run(debug=True)

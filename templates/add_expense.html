@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Expenses</title>
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/add_expense.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header>
-        <h2>Personal Financial Tracker</h2>
-        <p>Add a new expense.</p>
-    </header>
 
+    <header class="header-text">
+        <h2> Personal Financial Tracker </h2>
+        <!-- <div>{{name}}</div> -->
+        <p>Welcome to your dashboard.</p>
+    </header>
+<main>
+    <aside>
+
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('add_expense') }}">Add Expense</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+        </ul>
+    
+    </aside>
+
+<section>
     <div class="container">
 
         <div class="form-box">
@@ -36,5 +50,8 @@
 
 
     </div>
+
+</section>
+</main>
 </body>
 </html>
