@@ -45,7 +45,7 @@
         </div>
         <div class="card">
             <h3>Average Expenses</h3>
-            <p>{{ average }}</p>
+            <p>₹{{ "%.2f"|format(average) }}</p>
         </div>
         <div class="card">
             <h3>Highest Expense</h3>
@@ -58,7 +58,7 @@
         
         <div class="card">
             <h3>Transactions</h3>
-            <p> </p>
+            <p> {{ transaction }} </p>
         </div>
     </div>
 
