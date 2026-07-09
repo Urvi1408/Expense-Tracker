@@ -50,5 +50,9 @@ def history():
 
     return render_template("history.html",view=view,search=search)
 
+
+@app.route("/analytics")
+def analytics():
+
 if __name__ =="__main__":
     app.run(debug=True)
