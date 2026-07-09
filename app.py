@@ -18,7 +18,6 @@ def home():
     month=visualization.monthly_bar()
     exp=visualization.top_expenses()
     mode=visualization.payment_mode_bar()
-    mode=visualization.payment_mode_bar()
     transaction=analysis.total_transaction()
 
     return render_template("index.html",total=total,average=average,highest=highest,transaction=transaction,line=line ,cat=cat, month=month ,exp=exp,mode=mode,success=success)
