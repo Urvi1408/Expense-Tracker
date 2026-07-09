@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
+{% if success %}
+<script>
+    alert("Expense added successfully!");
+</script>
+{% endif %}
+
+
 <body>
 
 <header class="header-text">

@@ -8,6 +8,8 @@ app=Flask(__name__)
 
 @app.route("/")
 def home():
+    success = request.args.get("success")
+
     total=analysis.total_expenses()
     average=analysis.average_expense()
     highest=analysis.highest_expense()
@@ -17,7 +19,7 @@ def home():
     exp=visualization.top_expenses()
     mode=visualization.payment_mode_bar()
 
-    return render_template("index.html",total=total,average=average,highest=highest,line=line ,cat=cat, month=month ,exp=exp,mode=mode)
+    return render_template("index.html",total=total,average=average,highest=highest,line=line ,cat=cat, month=month ,exp=exp,mode=mode,success=success)
 
 @app.route("/add_expense",methods=["GET","POST"])
 def add_expense():
@@ -31,7 +33,7 @@ def add_expense():
         mode=request.form["mode"]
         
         em.addexpenses(date,category,description,amount,mode)
-        return redirect(url_for("home"))
+        return redirect(url_for("home",success="1"))
 
     return render_template("add_expense.html")
 

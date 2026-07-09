@@ -5,6 +5,11 @@ import csv
 
 def load_csv():
     df=pd.read_csv("data/expenses.csv")
+    df["mode_of_payment"] = (
+    df["mode_of_payment"]
+        .str.strip()      
+        .str.lower() 
+    )
     return df
 
 def total_expenses():
