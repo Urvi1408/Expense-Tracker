@@ -55,18 +55,19 @@ def payment_mode_analysis():
 def sort_asc():
     df=load_csv()
     asc=df.sort_values("amount")
-    return asc
+    return asc.to_dict(orient="records")
 
 def sort_desc():
     df=load_csv()
     des=df.sort_values("amount",ascending=False)
-    return des
+    return des.to_dict(orient="records")
 
 def sort_by_date():
     df=load_csv()
     df["date"]=pd.to_datetime(df["date"],dayfirst=True)
     sorted=df.sort_values(by="date")
-    return sorted
+    sorted["date"] = sorted["date"].dt.strftime("%d-%m-%Y")
+    return sorted.to_dict(orient="records")
 
 # def search_category():
 #     df=load_csv()

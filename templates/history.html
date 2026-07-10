@@ -28,8 +28,8 @@
     </aside>
     <section>
         <h2>Transaction History</h2>
-        <div class="search-box">
-            <form method="GET" action="{{url_for('history')}}">
+        <div class="filters">
+            <form method="GET" action="{{url_for('history')}}" class="search-form">
                 <select name="choice">
 
                     <option value="1">Date</option>
@@ -40,6 +40,19 @@
                 </select>
                 <input type="text", name="search" ,value="{{ search }}", placeholder="Search by category or description">
                 <button type="submit">Search</button>
+            </form>
+        
+            <form method="GET" action="{{ url_for('history') }}" id="sortForm" class="sort-form">
+
+                <select name="sort" onchange="this.form.submit()">
+
+                    <option value="">Sort By</option>
+                    <option value="amount_desc">Highest Amount</option>
+                    <option value="amount_asc">Lowest Amount</option>
+                    <option value="date">Date</option>
+
+                </select>
+
             </form>
         </div>
 

@@ -43,12 +43,19 @@ def add_expense():
 def history():
     choice=request.args.get("choice",type=int)
     search=request.args.get("search","")
-    if search:
-        view= em.search_expenses(choice, search)
+    sort = request.args.get("sort")
+    
+    if sort == "amount_desc":
+        view = analysis.sort_desc()
+    elif sort == "amount_asc":
+        view = analysis.sort_asc()
+    elif sort == "date":
+        view = analysis.sort_by_date()
+    elif search:
+        view = em.search_expenses(choice, search)
     else:
-        view=em.view_expenses()
-
-    return render_template("history.html",view=view,search=search)
+        view = em.view_expenses()
+    return render_template("history.html",view=view,search=search,sort=sort)
 
 
 @app.route("/analytics")
