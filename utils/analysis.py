@@ -35,7 +35,12 @@ def highest_expense():
 def lowest_expense():
     df=load_csv()
     low=df.loc[df["amount"].idxmin()]
-    return low
+    return {
+        "amount": low["amount"],
+        "category": low["category"],
+        "description": low["description"],
+        "date": low["date"]
+    }
 
 def average_expense():
     df=load_csv()
@@ -115,9 +120,7 @@ def top_spending():
     df=load_csv()
     top = df.groupby("category")["amount"].sum()
 
-    print("Top Spending Category:")
-    print(top.idxmax())
-    print("Amount: ₹", top.max())
+    return top.idxmax()
 
 def avg_daily():
     df=load_csv()
@@ -125,3 +128,7 @@ def avg_daily():
     dav=df.groupby("date")["amount"].sum()
     davg=dav.mean()
     return davg
+
+def avg_monthly():
+    d=monthly_expenses()
+    return d.mean()

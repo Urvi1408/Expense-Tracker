@@ -42,16 +42,16 @@
     <div class="cards">
         <div class="card">
             <h3>Total Expenses</h3>
-            <p>{{ total }}</p>
+            <p>₹{{ "{:,.2f}".format(total) }}</p>
         </div>
         <div class="card">
             <h3>Average Expenses</h3>
-            <p>₹{{ "%.2f"|format(average) }}</p>
+            <p>₹{{ "{:,.2f}".format(average) }}</p>
         </div>
         <div class="card">
             <h3>Highest Expense</h3>
 
-            <p>Amount: ₹{{ highest.amount }}</p>
+            <p>Amount: ₹{{ "{:,.2f}".format(highest.amount) }}</p>
             <p>Category: {{ highest.category }}</p>
             <p>Description: {{ highest.description }}</p>
             <p>Date: {{ highest.date }}</p>

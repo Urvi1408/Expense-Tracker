@@ -32,31 +32,71 @@
         <div class="cards">
             <div class="card">
                 <h3>Lowest Expense</h3>
-                <p>₹{{ lowest }}</p>
+
+                <p>Amount: ₹{{ lowest.amount }}</p>
+                <p>Category: {{ lowest.category }}</p>
+                <p>Description: {{ lowest.description }}</p>
+                <p>Date: {{ lowest.date }}</p>
             </div>
             <div class="card">
                 <h3>Average Daily Expenses</h3>
-                <p>₹{{ daily }}</p>
+                <p>₹{{ "{:,.2f}".format(daily) }}</p>
             </div>
             <div class="card">
                 <h3>Average Monthly Expenses</h3>
-                <p>₹{{ month }}</p>
+                <p>₹{{ "{:,.2f}".format(month) }}</p>
             </div>
             <div class="card">
-                <h3>Category Wise Expense</h3>
-                <p>{{ category}} </p>
-            </div>
-            <div class="card">
-                <h3>Lowest Expense</h3>
-                <p>{{ low }}</p>
+                <h3>Top Spending Category</h3>
+                <p>{{ top }}</p>
             </div>
             <div class="card">
                 <h3>Total Daily Expenses</h3>
-                <p> {{ tot }} </p>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for date,amount in tot.items() %}
+                    <tr>
+                        <td>{{ date.strftime("%d-%m-%Y") }}</td>
+                        <td>{{ amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="card">
+                <h3>Category Wise Expense</h3>
+                <table>
+                    <tr>
+                        <th>Category </th>
+                        <th>Amount</th> 
+                    </tr>
+                    {% for category,amount in cat.items() %}
+                    <tr>
+                        <td>{{ category }}</td>
+                        <td>{{ amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="card">
+                <h3>Payment Mode WIse Expenses</h3>
+                <table>
+                    <tr>
+                        <th>Payment Mode</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for mode,amount in payment.items() %}
+                    <tr>
+                        <td>{{ mode }}</td>
+                        <td>₹{{ amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
 
-    </section>
-    
+    </section>    
 </body>
 </html>

@@ -53,6 +53,14 @@ def history():
 
 @app.route("/analytics")
 def analytics():
+    lowest=analysis.lowest_expense()
+    daily=analysis.avg_daily()
+    month=analysis.avg_monthly()
+    top=analysis.top_spending()
+    tot=analysis.daily_expenses().tail(5)
+    cat=analysis.category_wise_expense()
+    payment=analysis.payment_mode_analysis()
+    return render_template("analytics.html", lowest=lowest,daily=daily,month=month,top=top,tot=tot,cat=cat,payment=payment)
 
 if __name__ =="__main__":
     app.run(debug=True)

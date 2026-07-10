@@ -7,3 +7,4 @@ expense_id,date,category,description,amount,mode_of_payment
 6,09-07-2026,food,burger,1600.0,upi
 7,02-06-2026,food,pasta,2000.0,cash
 8,07-07-2026,food,pasta,2000.0,cash
+9,08-07-2026,food,pasta,2000.0,cash
