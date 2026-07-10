@@ -22,6 +22,7 @@
             <li><a href="{{ url_for('add_expense') }}">Add Expense</a></li>
             <li><a href="{{ url_for('history') }}">History</a></li>
             <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+            <li><a href="{{ url_for('manage_expenses') }}">Manage Expenses</a></li>
         </ul>
     
     </aside>
@@ -30,6 +31,7 @@
     <div class="container">
 
         <div class="form-box">
+            <h2 class="manage-title">Add Expenses </h2>
             <form action="/add_expense" method="POST">
                 <label>Date</label>
                 <input type="date" name="date" placeholder="Enter date" required>

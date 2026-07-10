@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Expenses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+{% if request.args.get("updated") %}
+<script>
+alert("Expense updated successfully!");
+</script>
+{% endif %}
+
+{% if request.args.get("deleted") %}
+<script>
+alert("Expense deleted successfully!");
+</script>
+{% endif %}
+<body>
+    <header class="header-text">
+    <h2> Personal Financial Tracker </h2>
+    <!-- <div>{{name}}</div> -->
+    <p>Welcome to your dashboard.</p>
+</header>
+
+<main>
+    <aside>
+
+        <h3>Menu</h3>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('add_expense') }}">Add Expense</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+            <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+            <li><a href="{{ url_for('manage_expenses') }}">Manage Expenses</a></li>
+        </ul>
+    
+        </ul>
+    
+    </aside>
+    <section>
+        <h2 class="manage-title">Manage Expenses </h2>
+        <div class="manage-cards">
+            <form method="POST" action="{{ url_for('manage_expenses') }}"> 
+            <div class="card">
+                <h3>Update Expenses</h3>
+                <label>Expense Id:</label>
+                <input type="text", name="id" ,value="{{ search }}", placeholder="Enter Expense Id ">
+                <label>Field:</label>
+                <select name="choice">
+
+                    <option value="1">Date</option>
+                    <option value="2">Category</option>
+                    <option value="3">Description</option>
+                    <option value="4">Amount</option>
+                    <option value="5">Payment Mode</option>
+
+                </select>
+                <label>New Value</label>
+                <input type="text", name="newval", placeholder="Enter new value " required>
+                <button type="submit" name="action" value="update">
+                    Update
+                </button>
+            </div>
+            </form>
+            <form method="POST" action="{{ url_for('manage_expenses') }}">
+            <div class="card">
+                <h3>Delete Expenses</h3>
+                <label>Expense Id:</label>
+                <input type="text", name="id" ,value="{{ search }}", placeholder="Enter Expense Id ">
+                <button type="submit" name="action" value="delete">
+                    Delete
+                </button>
+            </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

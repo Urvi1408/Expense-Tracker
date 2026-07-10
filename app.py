@@ -69,5 +69,23 @@ def analytics():
     payment=analysis.payment_mode_analysis()
     return render_template("analytics.html", lowest=lowest,daily=daily,month=month,top=top,tot=tot,cat=cat,payment=payment)
 
+@app.route("/manager",methods=["GET","POST"])
+def manage_expenses():
+    if request.method=="POST":
+        action=request.form["action"]
+        if action=="update":
+            id=request.form["id"]
+            choice=int(request.form["choice"])
+            newval=request.form["newval"]
+            em.change_expenses(id,choice,newval)
+            return redirect(url_for("manage_expenses", updated=1))
+        elif action=="delete":
+            id=request.form["id"]
+            em.delete_expense(id)
+            return redirect(url_for("manage_expenses", deleted=1))
+        return redirect(url_for("manage_expenses"))
+    return render_template("manage_expenses.html")
+
+
 if __name__ =="__main__":
     app.run(debug=True)

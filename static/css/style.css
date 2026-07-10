@@ -25,7 +25,13 @@ header p{
     opacity:0.9;
 }
 aside a{
-    text-decoration: none;
+    display:block;
+    width:100%;
+    padding:15px;
+    border-radius:8px;
+    text-decoration:none;
+    color:#4C1D95;
+    transition:.3s;
 }
 main{
     display:flex;
@@ -50,14 +56,10 @@ aside ul{
 }
 
 aside li{
-    padding:15px;
+    list-style:none;
     margin-bottom:10px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
 }
-
-aside li:hover{
+aside a:hover{
     background:#DBEAFE;
     color:#2563EB;
 }
@@ -283,4 +285,19 @@ td{
 }
 tr:hover{
     background:#F8FAFC;
+}
+.manage-cards{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:40px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+.manage-cards .card{
+    width:430px;
+}
+.manage-title{
+    text-align:center;
+    margin-bottom:35px;
 }
