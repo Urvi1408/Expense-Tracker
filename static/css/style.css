@@ -148,27 +148,6 @@ section p{
     object-fit:contain;
 }
 
-@media(max-width:900px){
-
-    main{
-        flex-direction:column;
-    }
-
-    aside{
-        width:100%;
-    }
-
-    .charts,
-    .bottom{
-        grid-template-columns:1fr;
-    }
-
-    .charts{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-    }
-}
 
 header h2{
     font-size:32px;
@@ -300,4 +279,163 @@ tr:hover{
 .manage-title{
     text-align:center;
     margin-bottom:35px;
+}
+
+
+@media (max-width: 900px){
+
+    main{
+        flex-direction:column;
+    }
+
+    aside{
+        width:100%;
+        border-right:none;
+        border-bottom:1px solid #E2E8F0;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .charts,
+    .bottom{
+        grid-template-columns:1fr;
+    }
+
+    .filters{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-form{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-form input,
+    .search-form select,
+    .search-form button{
+        width:100%;
+    }
+
+    .sort-form{
+        width:100%;
+        margin-left:0;
+    }
+
+    .sort-form select{
+        width:100%;
+    }
+
+    .manage-cards{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .manage-cards .card{
+        width:100%;
+        max-width:500px;
+    }
+
+    .form-box{
+        width:100%;
+        margin:20px auto;
+        padding:30px;
+    }
+
+    .graph-box img{
+        height:300px;
+    }
+}
+
+
+@media (max-width:600px){
+
+    header{
+        padding:20px;
+        text-align:center;
+    }
+
+    header h2{
+        font-size:26px;
+    }
+
+    header p{
+        font-size:14px;
+    }
+
+    aside{
+        padding:20px;
+    }
+
+    aside h3{
+        font-size:22px;
+        text-align:center;
+    }
+
+    section{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .form-box{
+        margin:15px;
+        padding:20px;
+    }
+
+    input,
+    select,
+    button{
+        font-size:15px;
+        padding:12px;
+    }
+
+    .filters{
+        gap:15px;
+    }
+
+    .search-form{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .search-form input,
+    .search-form select,
+    .search-form button,
+    .sort-form select{
+        width:100%;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    th,
+    td{
+        padding:10px;
+    }
+
+    .graph-box img{
+        height:220px;
+    }
+
+    .table-box,
+    .chart-box,
+    .graph-box,
+    .section-title{
+        padding:15px;
+    }
+
+    .manage-cards .card{
+        width:100%;
+    }
 }
